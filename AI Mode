@@ -12,10 +12,10 @@ The following is the annotation area.
 
 2. 激活函數（Activation Function）
 
-	•	激活函數決定了神經元的輸出。常見的激活函數有：
-	•	ReLU（Rectified Linear Unit）：最常用的激活函數，將輸入中的負值置為 0，正值保持不變。
-	•	Sigmoid：輸出範圍為 0 到 1，常用於二元分類問題。
-	•	Tanh：輸出範圍為 -1 到 1，通常在某些情況下比 Sigmoid 更有效。
+	激活函數決定了神經元的輸出。常見的激活函數有：
+		•	ReLU（Rectified Linear Unit）：最常用的激活函數，將輸入中的負值置為 0，正值保持不變。
+		•	Sigmoid：輸出範圍為 0 到 1，常用於二元分類問題。
+		•	Tanh：輸出範圍為 -1 到 1，通常在某些情況下比 Sigmoid 更有效。
 
 3. 訓練過程
 
@@ -35,7 +35,8 @@ The following is the annotation area.
 	•	圖像識別：CNN（卷積神經網路）是一種特殊的神經網路，用於圖像數據的特徵提取和分類，廣泛應用於人臉識別、醫學影像處理等領域。
 	•	語音識別：RNN（循環神經網路）適用於處理序列數據，如語音或文本。LSTM 和 GRU 是 RNN 的改進版本，解決了長期依賴問題，應用於語音識別和語言模型中。
 	•	自然語言處理（NLP）：BERT 和 GPT 等預訓練模型在文本分類、機器翻譯和文本生成等任務中表現優異。
-
+  • 多層感知器(Multi-layered Perceptron/MLP):是一種前饋人工神經網絡，由輸入層、一個或多個隱藏層和輸出層組成。
+		其核心思想是通過每一層神經元的加權和偏置，以及激活函數來實現非線性映射，從而解決複雜的分類和迴歸問題。
  */
 
 import torch
@@ -68,11 +69,11 @@ test_loader = DataLoader(dataset=test_dataset, batch_size=64, shuffle=False)
 
 # 3. 初始化模型、損失函數和優化器
 model = SimpleNN()
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.CrossEntropyLoss() 
+optimizer = optim.Adam(model.parameters(), lr=0.0000001)
 
 # 4. 訓練模型
-def train(model, train_loader, criterion, optimizer, num_epochs=5):
+def train(model, train_loader, criterion, optimizer, num_epochs=10):
     for epoch in range(num_epochs):
         for images, labels in train_loader:
             # 前向傳播
